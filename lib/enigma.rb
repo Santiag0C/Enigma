@@ -33,8 +33,3 @@ class Enigma
     decryptor(index_inp).join
   end
 end
-
-
-e = Enigma.new
-p e.encrypt("hello world", "02207016" ,"1734")
-p e.decrypt("keder ohulw", "02207016", "1734")
