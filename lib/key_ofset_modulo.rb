@@ -8,7 +8,7 @@ module OffsetKey
     return squdat[-4..-1]
   end
 
-  def keys #used in combiner
+  def keys
     ran = 4.times.map { rand(10) }
     a = 0, ran[0]
     b = ran[0],ran[1]
