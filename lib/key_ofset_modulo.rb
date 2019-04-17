@@ -1,6 +1,6 @@
 module OffsetKey
 
-  def offsets#date## used in combiner
+  def offsets
     date = Time.new
     date = date.strftime("%d%m%y")
     squdat = date.to_i * date.to_i
@@ -17,7 +17,7 @@ module OffsetKey
     @shift = [a, b, c, d]
   end
 
-  def key_comb(argument_encry_decry)#used in conbiner
+  def key_comb(argument_encry_decry)
     if argument_encry_decry == true
       keys
       comb = @shift.map {|x| x.join}
@@ -27,12 +27,12 @@ module OffsetKey
     end
   end
 
-  def converter_key(argument_encry_decry)#helpr for key comb
+  def converter_key(argument_encry_decry)
     argument_encry_decry.scan(/../).map do |x|
       x.to_i
     end
   end
-  def converter_offset(argument_encry_decry)#helper for offser_comb
+  def converter_offset(argument_encry_decry)
     argument_encry_decry.scan(/./).map do |x|
       x.to_i
     end
@@ -46,7 +46,7 @@ module OffsetKey
     end
   end
 
-  def combiner#shifting
+  def combiner
     sa = 0
     sum = []
     while sa != 4
@@ -54,6 +54,5 @@ module OffsetKey
       sa += 1
     end
     sum
-    #[-3,-27,-73,-20]
   end
 end
