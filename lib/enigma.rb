@@ -1,36 +1,17 @@
 require 'pry'
+require_relative 'key_ofset_modulo'
 class Enigma
+  include OffsetKey
   attr_reader :alph, :alpha
   def initialize
     @alpha = ("a".."z").to_a
     @alph = ("a".."z").to_a << " "
+    @ralph = @alph.reverse
     @shift
   end
 
-  def offsets#date## used in combiner
-    date = Time.new
-    date = date.strftime("%d%m%y")
-    squdat = date.to_i * date.to_i
-    squdat = squdat.to_s
-    return squdat[-4..-1]
-  end
-
-  def keys #used in combiner
-    ran = 4.times.map { rand(10) }
-    a = 0, ran[0]
-    b = ran[0],ran[1]
-    c = ran[1],ran[2]
-    d = ran[2],ran[3]
-    @shift = [a, b, c, d]
-  end
-
-  def key_comb
-    comb = @shift.map {|x| x.join}
-    comb_i = comb.map {|x| x.to_i}
-  end
 
   def offsets_comb
-    # binding.pry
     of_i = offsets.scan(/./).map {|e| e.to_i}
   end
 
@@ -42,7 +23,7 @@ class Enigma
       sa += 1
     end
     sum
-    [3,27,73,20]
+    [-3,-27,-73,-20]
   end
 
   def index_gatherer(input)
@@ -52,10 +33,11 @@ class Enigma
           index_of_input << @alph.index(let)  if let == alp
         end
       end
-    encryptor(index_of_input)
+      index_of_input
   end
 
   def input_converter(message) #helpre for index gatherer
+    #index_gatherer(message.chars)
     index_gatherer(message.chars)
   end
 
@@ -84,10 +66,16 @@ class Enigma
     end
     arr
   end
-  def encrypt(message)#, key = true, date = true)
+
+  def encrypt(message, key = true, date = true)
     input_converter(message).join
+
+  end
+  def decrypt#(mesage, key = true, date = true)
+    input_converter("keder ohulw")
   end
 end
+
 
 e = Enigma.new
 e.keys
@@ -97,5 +85,5 @@ e.keys
 # p e.combiner
 # p e.index_gatherer
 # p e.encryptor
-p e.encrypt("hello world")
+p e.encryptor([10, 4, 3, 4, 17, 26, 14, 7, 20, 11, 22])#("hello world")
 # p e.alpha.rotate(0)
