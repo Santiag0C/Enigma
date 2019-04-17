@@ -3,7 +3,7 @@ module Encryptor
   def index_gatherer(input_in_array)
     index_of_input = []
     input_in_array.each do |let|
-      @alph.each do |alp|# _with_index do |val, index|
+      @alph.each do |alp|
           index_of_input << @alph.index(let)  if let == alp
         end
       end
