@@ -25,7 +25,7 @@ module Decripter
     arr
   end
 
-  def combiner_decrypt#shifting
+  def combiner_decrypt
     sa = 0
     sum = []
     while sa != 4
