@@ -13,12 +13,12 @@ class Enigma
     @shift
   end
 
-  def input_converter(message) #helpre for index gatherer
+  def input_converter(message)
     index_gatherer(message.chars)
   end
 
   def encrypt(message, key = true, date = true)
-    index_inp = input_converter(message)#.join
+    index_inp = input_converter(message)
     key_comb(key)
     offsets_comb(date)
     combiner
@@ -26,7 +26,7 @@ class Enigma
   end
 
   def decrypt(message, key = true, date = true)
-    index_inp = input_converter(message)#.join
+    index_inp = input_converter(message)
     key_comb(key)
     offsets_comb(date)
     combiner_decrypt
