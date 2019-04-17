@@ -21,9 +21,7 @@ class Enigma
     index_inp = input_converter(message)#.join
     key_comb(key)
     offsets_comb(date)
-    
     combiner
-
     encryptor_decryptor(index_inp).join
   end
 
