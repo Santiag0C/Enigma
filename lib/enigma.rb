@@ -6,7 +6,7 @@ class Enigma
   include OffsetKey
   include Encryptor
   include Decripter
-  attr_reader :alph, :alpha
+  attr_reader :alph, :alpha, :off, :key, :shift
   def initialize
     @alpha = ("a".."z").to_a
     @alph = ("a".."z").to_a << " "
